@@ -1,12 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Trackspace Documentation
 
-## Getting Started
+**Trackspace** is a next-generation supply chain tracking solution designed to provide ultimate transparency and security using blockchain, automation, and AI. This documentation explains the problem Trackspace solves, the structure of the project, and the components involved.
 
-First, run the development server:
+## Table of Contents
+- [Problem Statement](#problem-statement)
+- [Project Overview](#project-overview)
+- [Frontend](#frontend)
+- [Backend](#backend)
+- [Computer Vision Service](#computer-vision-service)
+- [Smart Contract](#smart-contract)
+- [System Architecture](#system-architecture)
+
+## Problem Statement
+
+In today’s supply chain, transparency is a significant challenge. Producers like Akshay, who supply products to large retailers such as Walmart, struggle to track their goods accurately through multiple warehouses and transportation routes. Each warehouse might split or merge batches for further transportation, making it difficult for producers, managers, and consumers to verify if the products took the designated path and reached their destination within the required timeframe to ensure freshness.
+
+Consumers, like Jenny, who care about the quality and freshness of their food, have no way to verify the journey of their products. Meanwhile, producers have no system in place to provide undeniable proof of where their goods have been and when they arrived. This lack of transparency leads to mistrust and potential quality issues.
+
+## Project Overview
+
+**Trackspace** addresses these challenges by enabling end-to-end transparency and security in the supply chain. The system ensures that every product is tracked from its origin to its final destination, with each step recorded on the blockchain. Here’s how Trackspace solves the problem:
+
+- **Individual Product IDs**: Every product is assigned a unique ID, which is linked to a batch. This allows for precise tracking of each item as it moves through the supply chain.
+- **Blockchain Logging**: Every movement and transaction related to the product is recorded on the blockchain, ensuring that the data is immutable and transparent.
+- **Automated Transactions**: Using Chainlink’s upkeep service, most transactions are automated, reducing the need for manual input and minimizing human error.
+- **Visual Proof**: To ensure that a product reached its designated location, Trackspace uses computer vision to recognize truck number plates. The system captures a photo of the number plate, timestamps it, uploads it to IPFS, and links it to the batch. This provides visual proof of the batch's journey.
+- **Location Tracking**: Location data is stored in a centralized database at timed intervals, and the latest transaction is automatically updated on the blockchain to ensure real-time tracking.
+
+## Frontend
+
+The frontend of Trackspace is built with **Next.js** and serves as the user interface for interacting with the system.
+
+### Features
+- **Product ID Retrieval**: Users can retrieve product IDs and batch locations directly from the blockchain.
+- **Barcode Scanning**: The frontend includes a barcode scanner that allows users to scan product IDs and retrieve associated information.
+- **Smart Contract Interaction**: Users can query the smart contract to initialize a product pipeline.
+- **Location Tracking**: The interface retrieves and displays the location of products on a map, providing a visual representation of their journey.
+- **Transaction History**: Users can view previous transactions, including IPFS links to visual proofs stored for each product.
+
+### Setup
+To set up the frontend:
+
+setup .env with DATABASE_URL for a postgres database
 
 ```bash
+npm i
 npm run dev
 ```
+## Backend
+The backend is also built with Next.js and is responsible for managing the centralized database and automating smart contract transactions.
+### Features
+Location Storage: Stores location information of products in a centralized database at timed intervals.
+Smart Contract Interaction: Automatically serves the latest transaction to the smart contract via Chainlink’s upkeep service, reducing human error.
+### Structure
+API Routes: Endpoints for storing and retrieving location data.
+Database: Centralized database to store product and batch location data.
+Chainlink Upkeep: Service to automate the submission of the latest transactions to the smart contract.
+
+# computer vision service
+The computer vision service is designed to recognize truck name plates using machine learning models and link the information to the corresponding batch.
+
+## Features
+Name Plate Recognition: Uses computer vision to recognize and extract text from truck name plates.
+Batch Association: Associates recognized text with the relevant batch in the system.
+## IPFS Upload: Uploads the photo with a timestamp to IPFS and links it to the batch as visual proof.
+Structure
+Model: Pre-trained machine learning model for name plate recognition.
+Image Processing: Scripts for processing images and extracting text.
+IPFS Integration: Service for uploading photos to IPFS and retrieving links.
+
+# System Architecture
+Overview
+The system architecture is designed to ensure transparency, security, and automation in the supply chain. The frontend, backend, computer vision service, and smart contract work together to track products and batches from origin to destination.
+
+
+
 # smart contract
 
 ## structs:
