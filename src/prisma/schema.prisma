@@ -1,0 +1,33 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  productId String   @id @default(uuid())
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  type      String
+  batchId   String
+}
+
+model Batch {
+  name        String
+  batchId     String      @id @default(uuid())
+  createdAt   DateTime    @default(now()) @db.Timestamp(6)
+  source      String
+  destination String
+  status      BatchStatus
+  productIds  String[]
+  longitude   Float
+  lattitude   Float
+}
+
+enum BatchStatus {
+  InTransit
+  Delivered
+  Cancelled
+}
