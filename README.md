@@ -71,7 +71,14 @@ IPFS Integration: Service for uploading photos to IPFS and retrieving links.
 
 # System Architecture
 Overview
-The system architecture is designed to ensure transparency, security, and automation in the supply chain. The frontend, backend, computer vision service, and smart contract work together to track products and batches from origin to destination.
+The system architecture is designed to ensure transparency, security, and automation in the supply chain.
+The frontend, backend, computer vision service, and smart contract work together to track products and batches from origin to destination.
+The whole process looks like this:
+<img width="1262" alt="Screenshot 2024-08-16 at 1 24 33 AM" src="https://github.com/user-attachments/assets/95e8883b-6225-425b-ab6d-2d24f1bb2fa6">
+<img width="557" alt="Screenshot 2024-08-16 at 1 25 01 AM" src="https://github.com/user-attachments/assets/58ad933b-7efd-4d2f-98aa-0336aa6014e3">
+<img width="663" alt="Screenshot 2024-08-16 at 1 25 36 AM" src="https://github.com/user-attachments/assets/e20b5dc5-4904-48a9-8e26-019cbc1a4247">
+<img width="1124" alt="Screenshot 2024-08-16 at 1 34 06 AM" src="https://github.com/user-attachments/assets/012c6f93-1578-40a7-827e-9182051dfae8">
+<img width="727" alt="Screenshot 2024-08-16 at 1 34 57 AM" src="https://github.com/user-attachments/assets/e623a77b-6639-4b01-b001-66e99fb23cba">
 
 
 
